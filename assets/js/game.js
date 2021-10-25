@@ -91,7 +91,7 @@ var fight = function(enemyName) {
 // function to start a new game //
 var startGame = function() {
     // reset player stats //
-    playerHealth = 10;
+    playerHealth = 100;
     playerAttack = 10;
     playerMoney = 10;
     // loop fight with enemy robot //
