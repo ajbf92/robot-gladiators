@@ -117,7 +117,7 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // New enemy health reset//
-            enemyHealth = 10;
+            enemyHealth = 50;
             fight(pickedEnemyName);
 
             // if player is still alive and we are not at the last enemy in the array //
