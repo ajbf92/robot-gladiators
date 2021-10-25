@@ -180,56 +180,56 @@ var shop = function() {
         "Welcome to the shop! Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
     
     // use switch to carry out action
-switch (shopOptionPrompt) {
-    case "refill":
-    case "Refill":
-    case "REFILL":
-    if (playerMoney >= 7) {
-      window.alert("Refilling player's health by 20hp for 7 coins.");
+    switch (shopOptionPrompt) {
+        case "refill":
+        case "Refill":
+        case "REFILL":
+        if (playerMoney >= 7) {
+            window.alert("Refilling player's health by 20hp for 7 coins.");
     
-      // increase health and decrease money
-      playerHealth = playerHealth + 20;
-      playerMoney = playerMoney - 7;
+            // increase health and decrease money
+            playerHealth = playerHealth + 20;
+            playerMoney = playerMoney - 7;
 
-      // display new health and money remaining //
-      window.alert("Your health is now " + playerHealth + "hp and you have " + playerMoney + " coins remaining.")
-    }
-        else {
-            window.alert("You don't have enough money!");
-    }
-
-        break;
-    case "upgrade":
-    case "UPGRADE":
-    case "Upgrade":
-    if (playerMoney >= 7) {
-      window.alert("Upgrading player's attack by 6 for 7 coins.");
-  
-      // increase attack and decrease money
-      playerAttack = playerAttack + 6;
-      playerMoney = playerMoney - 7;
-      
-      //display new attack and money remaining //
-      window.alert("Your attack is now " + playerAttack + " atk and you have " + playerMoney + " coins remaining.")
-    }
-        else {
-            window.alert("You don't have enough money!"); 
+            // display new health and money remaining //
+            window.alert("Your health is now " + playerHealth + "hp and you have " + playerMoney + " coins remaining.")
         }
-        break;
-    case "leave":
-    case "LEAVE":
-    case "Leave":
-      window.alert("Leaving the store. See you next time!");
+            else {
+                window.alert("You don't have enough money!");
+        }
+
+            break;
+        case "upgrade":
+        case "UPGRADE":
+        case "Upgrade":
+        if (playerMoney >= 7) {
+            window.alert("Upgrading player's attack by 6 for 7 coins.");
   
-      // do nothing, so function will end
-      break;
-    default:
-      window.alert("You did not pick a valid option. Try again.");
+            // increase attack and decrease money
+            playerAttack = playerAttack + 6;
+            playerMoney = playerMoney - 7;
+      
+            //display new attack and money remaining //
+            window.alert("Your attack is now " + playerAttack + " atk and you have " + playerMoney + " coins remaining.")
+        }
+            else {
+                window.alert("You don't have enough money!"); 
+        }
+            break;
+        case "leave":
+        case "LEAVE":
+        case "Leave":
+            window.alert("Leaving the store. See you next time!");
   
-      // call shop() again to force player to pick a valid option
-      shop();
-      break;
-  }
+            // do nothing, so function will end
+            break;
+        default:
+            window.alert("You did not pick a valid option. Try again.");
+  
+        // call shop() again to force player to pick a valid option
+            shop();
+            break;
+    }
 };
 
 // start game when page loads //
