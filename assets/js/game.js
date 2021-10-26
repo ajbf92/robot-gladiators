@@ -7,11 +7,11 @@ var fight = function(enemy) {
     // repeat and execute as long as the enemy-robot is alive 
     while(playerInfo.health > 0 && enemy.health > 0) {
 
-         // Ask player if they would like to fight or skip //
-         var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-
-         // if player choses to skip
-        if (promptFight === "skip" || promptFight === "SKIP" || promptFight === "Skip") {
+        // Ask player if they would like to fight or skip //
+        var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+        promptFight = promptFight.toLowerCase();
+        // if player choses to skip
+        if (promptFight === "skip") {
     
             // confirm player wants to skip and stop loop //
             var confirmSkip = window.confirm("Are you sure you'd like to quit?");
@@ -38,7 +38,7 @@ var fight = function(enemy) {
         }
 
         // if player choses to fight, then fight
-        if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight")  {  
+        if (promptFight === "fight")  {  
 
             // generate random damage value based on player's attack power //
             //var damage = randomNumber(playerAttack-3, playerAttack); what the module states//
@@ -232,8 +232,8 @@ var playerInfo = {
             window.alert("Refilling player's health by 20hp for 7 coins.");
         this.health += 20;
         this.money -= 7;
-        window.alert("Your attack is now " + playerInfo.attack + " atk and you have " + playerInfo.money + " coins remaining.");
-        }
+        window.alert("Your health is now " + playerInfo.health + "hp and you have " + playerInfo.money + " coins remaining.");
+    }
         else {
             window.alert("You don't have enough money!");
         }
