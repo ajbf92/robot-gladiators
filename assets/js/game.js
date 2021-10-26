@@ -3,7 +3,7 @@ window.alert("Welcome to Robot Gladiators!");//
 
 // fight function statement //
 var fight = function(enemy) {
-    
+    window.alert("CHALLENGER is..." + playerInfo.name + "! With an attack = " + playerInfo.attack + " and health = " + playerInfo.health + "hp. VERSUS..." + enemy.name + "! With an attack = " + enemy.attack + " and health = " + enemy.health + "hp!"); 
     // repeat and execute as long as the enemy-robot is alive 
     while(playerInfo.health > 0 && enemy.health > 0) {
 
@@ -104,7 +104,7 @@ var startGame = function() {
             
             // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
             window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
-            debugger;
+            
             // pick new enemy to fight based on the index of the enemyNames array //
             var pickedEnemyObj = enemyInfo[i];
 
@@ -163,23 +163,18 @@ var shop = function() {
 
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
-        "Welcome to the shop! Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
+        "Welcome to the shop! Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter: 1 to 'REFILL', 2 to 'UPGRADE', or 3 to 'LEAVE' to make a choice.");
     
+    shopOptionPrompt= parseInt(shopOptionPrompt);
     // use switch to carry out action
     switch (shopOptionPrompt) {
-        case "refill":
-        case "Refill":
-        case "REFILL":
+        case 1:
             playerInfo.refillHealth();
             break;
-        case "upgrade":
-        case "UPGRADE":
-        case "Upgrade":
+        case 2:
             playerInfo.upgradeAttack();
             break;
-        case "leave":
-        case "LEAVE":
-        case "Leave":
+        case 3:
             window.alert("Leaving the store. See you next time!");
             
             // do nothing, so function will end
@@ -251,27 +246,24 @@ var playerInfo = {
     }
 };
 
-// You can also log multiple values at once like this
-console.log(playerInfo.name, "Attack = " + playerInfo.attack, "Health = " + playerInfo.health);
-
 // Enemy Robot stats //
 //var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"]; 
 //var enemyHealth = 50;
 //var enemyAttack = 12;
 //var enemyMoney = 10;
-// turned into an object as well like the player stats //
+//turned into an object as well like the player stats //
 var enemyInfo = [
     {
       name: "Roborto",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(10, 12)
     },
     {
       name: "Amy Android",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(12, 14)
     },
     {
       name: "Robo Trumble",
-      attack: randomNumber(10, 14)
+      attack: randomNumber(14, 16)
     }
   ];
 
