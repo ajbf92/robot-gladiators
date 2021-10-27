@@ -109,7 +109,7 @@ var startGame = function() {
             var pickedEnemyObj = enemyInfo[i];
 
             // New enemy health reset //
-            pickedEnemyObj.health = randomNumber(40, 60);
+            pickedEnemyObj.health = randomNumber(50, 70);
             fight(pickedEnemyObj);
 
             // if player is still alive and we are not at the last enemy in the array //
@@ -149,7 +149,7 @@ var endGame = function() {
         window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
             // New high score for player check //
             if (playerInfo.money <= highScore) {
-                window.alert("...Unfortunately, you did not beat the current high score of " + playerInfo.money + " set by " + playerInfo.name + ".");
+                window.alert("...Unfortunately, you did not beat the current high score of " + localStorage.getItem("highscore") + " set by " + localStorage.getItem("name") + "!");
             } else {
                 localStorage.setItem("highscore" , playerInfo.money);
                 localStorage.setItem("name" , playerInfo.name);
@@ -179,9 +179,9 @@ var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
         "Welcome to the shop! Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter: 1 to 'REFILL', 2 to 'UPGRADE', or 3 to 'LEAVE' to make a choice.");
-    
-    shopOptionPrompt= parseInt(shopOptionPrompt);
-    // use switch to carry out action
+
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+    // use switch to carry out action and if player has enough money they can shop again //
     switch (shopOptionPrompt) {
         case 1:
             playerInfo.refillHealth();
@@ -202,6 +202,8 @@ var shop = function() {
             break;
     }
 };
+//can purchase more items if they have enough money- to be inserted under “display new health and money remaining”//
+
 //function to generate random numeric value//
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max-min + 1) + min);
@@ -238,23 +240,37 @@ var playerInfo = {
     }, //comma is needed //
     // was part of the switch above but was added as a function to the object to clean up the code // 
     refillHealth: function() {
-        if (playerInfo.money >= 7) {
+        if (playerInfo.money >= 15) {
             window.alert("Refilling player's health by 20hp for 7 coins.");
         this.health += 20;
-        this.money -= 7;
+        this.money -= 15;
         window.alert("Your health is now " + playerInfo.health + "hp and you have " + playerInfo.money + " coins remaining.");
-    }
+        }
+        //re-entershop//
+        if (playerInfo.money >= 15) {
+            var shopAgainConfirm = window.confirm("Would you like to shop some more? you have " + playerInfo.money + " coins remaining.");
+            if (shopAgainConfirm) {
+                // go back into shop //
+                shop();
+                } 
+            }
         else {
             window.alert("You don't have enough money!");
         }
     },
     upgradeAttack: function() {
-        if (playerInfo.money >= 7) {
+        if (playerInfo.money >= 15) {
             window.alert("Upgrading player's attack by 6 for 7 coins.");
         this.attack += 6;
-        this.money -= 7;
+        this.money -= 15;
         window.alert("Your attack is now " + playerInfo.attack + " atk and you have " + playerInfo.money + " coins remaining.")
-    }
+        if (playerInfo.money >= 15) {
+                var shopAgainConfirm = window.confirm("Would you like to shop some more? you have " + playerInfo.money + " coins remaining.");
+                if (shopAgainConfirm) {
+                    // go back into shop //
+                    shop();
+                    } 
+            } }
         else {
             window.alert("You don't have enough money!");
         }
