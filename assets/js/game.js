@@ -1,19 +1,10 @@
 // Alert players that they are starting the round
 window.alert("Welcome to Robot Gladiators!");//
 
-
-
-
-
-
 // fight function statement //
 var fight = function(enemy) {
     window.alert("CHALLENGER is..." + playerInfo.name + "! With an attack = " + playerInfo.attack + " and health = " + playerInfo.health + "hp. VERSUS..." + enemy.name + "! With an attack = " + enemy.attack + " and health = " + enemy.health + "hp!"); 
     // repeat and execute as long as the enemy-robot is alive 
-    
-    
-    
-    
     while(playerInfo.health > 0 && enemy.health > 0) {
 
         // Ask player if they would like to fight or skip //
@@ -99,18 +90,6 @@ var fight = function(enemy) {
             };
     };    
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function to start a new game //
 var startGame = function() {
