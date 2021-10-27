@@ -1,10 +1,19 @@
 // Alert players that they are starting the round
 window.alert("Welcome to Robot Gladiators!");//
 
+
+
+
+
+
 // fight function statement //
 var fight = function(enemy) {
     window.alert("CHALLENGER is..." + playerInfo.name + "! With an attack = " + playerInfo.attack + " and health = " + playerInfo.health + "hp. VERSUS..." + enemy.name + "! With an attack = " + enemy.attack + " and health = " + enemy.health + "hp!"); 
     // repeat and execute as long as the enemy-robot is alive 
+    
+    
+    
+    
     while(playerInfo.health > 0 && enemy.health > 0) {
 
         // Ask player if they would like to fight or skip //
@@ -91,6 +100,18 @@ var fight = function(enemy) {
     };    
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
 // function to start a new game //
 var startGame = function() {
 
@@ -126,7 +147,7 @@ var startGame = function() {
         }   
             // if player is not alive, end game //
             else {
-                window.alert("Game Over: You have lost your robot in battle!");
+                window.alert("You have lost your robot in battle!");
                 break;
         };  
     };
@@ -137,14 +158,29 @@ var startGame = function() {
 // function to end the entire game //
 var endGame = function() {
     window.alert("Let's see how you did!");
+
+    // check localStorage for highscore. If its blank, its 0//
+    var highScore = localStorage.getItem("highscore");
+    if (highScore === null) {
+        highScore = 0;
+    }
+
       // if player is still alive, player wins!
     if (playerInfo.health > 0) {
         window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
+            // New high score for player check //
+            if (playerInfo.money <= highScore) {
+                window.alert("...Unfortunately, you did not beat the current high score of " + playerInfo.money + " set by " + playerInfo.name + ".");
+            } else {
+                localStorage.setItem("highscore" , playerInfo.money);
+                localStorage.setItem("name" , playerInfo.name);
+                window.alert("CONGRATULATION!!! You, " + playerInfo.name.toUpperCase + " hold the new record for ROBOT GLADIATORS! Final score = " + playerInfo.money);
+            }
     } 
         // preferred format for end of game if player loss //
-        else {
-            window.alert("You ended with a score of " + playerInfo.money + ".");
-        };
+    else {
+            window.alert("GAME OVER!");
+        }
 
     // ask player if they'd like to play again
     var playAgainConfirm = window.confirm("Would you like to play again?");
@@ -155,7 +191,7 @@ var endGame = function() {
     } 
     else {
         window.alert("Thank you for playing Robot Gladiators! Come back soon!");
-    };
+    }
 };
 
 // shop function definition //
